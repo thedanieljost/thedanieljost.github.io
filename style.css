@@ -173,7 +173,6 @@ grid-gap: 8px;
     display: flex;
     align-items: center;
     list-style: none;
-    z-index: -1;
 }
 .redes-sociais li{
     margin-right: 10px;
