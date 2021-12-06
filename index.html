@@ -37,29 +37,30 @@
     <header>
         <main class="container">
             <section class="row banner">
-                <div class="col-6">
-                    <img src="img/eu20192.png">
-        
+                <div class="col-6 meuperfil">
                 </div>
-<div> 
-    <h1>Redes Sociais</h1>
-    <ul class="redes-sociais">
-        <li><a href="https://www.instagram.com/thedanieljost/?hl=pt-br"><i class="fa fa-instagram"></i></a></li>
-        <li><a href="https://twitter.com/thedanieljost"><i class="fa fa-twitter"></i></a></li>
-        <li><a href="https://www.facebook.com/profile.php?id=100023398721384"><i class="fa fa-facebook-f"></i></a></li>
-    </ul>
-</div>
-<div class="meuperfil">
-
-</div>
-<div class="seguindo">
-    
-</div>
+                <div>
             </section>
             <section class="row texto_principal">
                 <h1>Daniel Jost</h1>
-                <p>Objetivos de bla bla bla bla e etc e tal e tudo mais</p>
+                <h1>Redes Sociais</h1>
+            <ul class="redes-sociais">
+                <li><a href="https://www.instagram.com/thedanieljost/?hl=pt-br"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://twitter.com/thedanieljost"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=100023398721384"><i
+                            class="fa fa-facebook-f"></i></a></li>
+            </ul>
+                <p>Estudante de engenharia de software da pucminas :) </p>
 
+            </section>
+            <p>Pesquise no Github abaixo </p>
+            <a target="_blank" href="paginaDePesquisa.html"> Pesquisar github </a>
+            <section class="textoSeguindo">
+                <h1> Daniel Jost segue:</h1>
+            </section>
+            </div>
+                <section class="row banner seguindo">
+                </section>
             </section>
             </section>
             <section class="row infos">
@@ -110,11 +111,18 @@
             <p>Legenda</p>
         </div>
     </section>
-<section class="conteudo">
-    <h1>Conteudo eu que dirigi esses clipes</h1>
-    <iframe width="460" height="215" src="https://www.youtube.com/embed/8BBF3vRY85M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="460" height="215" src="https://www.youtube.com/embed/4TWR90KJl84" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</section>
+    <section class="conteudo">
+        <h1>Conteudo eu que dirigi esses clipes</h1>
+        <iframe width="460" height="215" src="https://www.youtube.com/embed/8BBF3vRY85M" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        <iframe width="460" height="215" src="https://www.youtube.com/embed/4TWR90KJl84" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+            <iframe width="460" height="215" src="https://www.youtube.com/embed/PYGODWJgR-c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
 
     <footer class="container footer">
         Copyright 2021 - TODOS OS DIREITOS RESERVADOS
@@ -125,67 +133,80 @@
 </body>
 
 <script>
- var myHeaders = new Headers();
-var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
-};
+    var myHeaders = new Headers();
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
 
-function githubreq(){
-    fetch("https://api.github.com/users/thedanielost/following", requestOptions)
-  .then(response => response.json())
-  .then(result =>{
-  result.forEach(element => {
-    const variavelz = document.createElement("img")
-    const variavely = document.createElement("div")
-    const variavelx = document.createElement("p")
-     variavelx.innerText = element.login
-     variavelz.src = element.avatar_url
-     variavely.appendChild(variavelx)
-     variavely.appendChild(variavelz)
-     document.querySelector(".seguindo").appendChild(variavely)
-  });
-   })
-  .catch(error => console.log('error', error));  
-}
-githubreq();
-function githubreq2(){
-    fetch("https://api.github.com/users/thedanielost", requestOptions)
-  .then(response => response.json())
-  .then(result =>{
-    const variavelz = document.createElement("img")
-    const variavely = document.createElement("div")
-    const variavelx = document.createElement("p")
-     variavelx.innerText = result.login
-     variavelz.src = result.avatar_url
-     variavely.appendChild(variavelx)
-     variavely.appendChild(variavelz)
-     fetch(result.repos_url,requestOptions).then(response => response.json())
-     .then(repos => {
-        repos.forEach(element => {
-        const variavela = document.createElement("a")
-    const variavelb = document.createElement("div")
-    const variavelc = document.createElement("p")
-    const variaveld = document.createElement("p")
-    const variavele = document.createElement("p")
-     variavela.innerText = element.html_url
-     variavelc.innerText = element.name
-     variaveld.innerText = element.description
-     variavela.href = element.html_url
-     variavele.innerText =  new Date(element.created_at).toLocaleString()
-     variavelb.appendChild(variavelc)
-     variavelb.appendChild(variaveld)
-     variavelb.appendChild(variavela)
-     variavelb.appendChild(variavele)
-     variavely.appendChild(variavelb)
-        })})
-     document.querySelector(".meuperfil").appendChild(variavely)
-    console.log(result);
-   })
-  .catch(error => console.log('error', error));  
-}
-githubreq2();
+    function githubreq() {
+        fetch("https://api.github.com/users/thedanieljost/following", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                result.forEach(element => {
+                    const variavelz = document.createElement("img")
+                    const variavely = document.createElement("div")
+                    const variavelx = document.createElement("p")
+                    const variavelf = document.createElement("a")
+                    variavelf.href = element.html_url
+                    variavelf.target = "_blank"
+                    variavelx.innerText = element.login
+                    variavelz.src = element.avatar_url
+                    variavelf.appendChild(variavelx)
+                    variavelf.appendChild(variavelz)
+                    variavely.appendChild(variavelf)
+                    document.querySelector(".seguindo").appendChild(variavely)
+                });
+            })
+            .catch(error => console.log('error', error));
+    }
+    githubreq();
+    function githubreq2() {
+        fetch("https://api.github.com/users/thedanieljost", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                const variavelz = document.createElement("img")
+                const variavely = document.createElement("div")
+                const variavelg = document.createElement("div")
+                variavely.classList.add("contemRepositorio")
+                const variavelx = document.createElement("p")
+                const variavelf = document.createElement("a")
+                variavelf.href = result.html_url
+                variavelf.target = "_blank"
+                variavelx.innerText = result.login
+                variavelz.src = result.avatar_url
+                variavelf.appendChild(variavelx)
+                variavelf.appendChild(variavelz)
+                variavely.appendChild(variavelf)
+                fetch(result.repos_url, requestOptions).then(response => response.json())
+                    .then(repos => {
+                        repos.forEach(element => {
+                            const variavela = document.createElement("a")
+                            const variavelb = document.createElement("div")
+                            variavelb.classList.add("infoRepositorio")
+                            const variavelc = document.createElement("p")
+                            const variaveld = document.createElement("p")
+                            const variavele = document.createElement("p")
+                            variavela.innerText = element.html_url
+                            variavelc.innerText = element.name
+                            variaveld.innerText = element.description
+                            variavela.href = element.html_url
+                            variavele.innerText = new Date(element.created_at).toLocaleString()
+                            variavelb.appendChild(variavelc)
+                            variavelb.appendChild(variaveld)
+                            variavelb.appendChild(variavela)
+                            variavelb.appendChild(variavele)
+                            variavelg.appendChild(variavelb)
+                        })
+                    })
+                    variavely.appendChild(variavelg)
+                document.querySelector(".meuperfil").appendChild(variavely)
+                console.log(result);
+            })
+            .catch(error => console.log('error', error));
+    }
+    githubreq2();
 </script>
 
 

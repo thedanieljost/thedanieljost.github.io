@@ -154,6 +154,7 @@ grid-gap: 8px;
     }
     .card{
         display: block;
+        z-index: -1;
     }
     .banner{
         grid-column: auto;
@@ -166,10 +167,13 @@ grid-gap: 8px;
     margin-left: 80px;
 }
 .redes-sociais{
+    
+        width: 100%;
+        justify-content: center;
     display: flex;
-    flex-direction: row;
-    float: left;
+    align-items: center;
     list-style: none;
+    z-index: -1;
 }
 .redes-sociais li{
     margin-right: 10px;
@@ -180,3 +184,13 @@ grid-gap: 8px;
     align-content: center;
 }
 /*CSS grid - fim */
+.contemRepositorio {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.seguindo {
+    width: 30%;
+    height: 30%;
+}

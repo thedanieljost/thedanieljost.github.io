@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="ftext">Digite uma pesquisa</label><br>
+    <input class="inputPesquisa" type="text" id="fname" name="ftext"><br>
+    <select class="inputValor" name="select">
+        <option value="users">Usuários</option>
+        <option value="repositories">Repositórios</option>
+    </select>
+    <button onclick="fazPesquisa();" type="button">Enviar</button>
+    <div class="resultadosShow">
+
+    </div>
+
+</body>
+<script>
+    function fazPesquisa() {
+        document.querySelector(".resultadosShow").innerHTML=""
+        const pesquisa1 = (document.querySelector('.inputPesquisa').value);
+        const pesquisatipo = (document.querySelector('.inputValor').value);
+        var myHeaders = new Headers();
+        var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+        fetch(`https://api.github.com/search/${pesquisatipo}?q=${encodeURIComponent(pesquisa1)}`, requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+                const nomeParametro = {
+                    users:"login",
+                    repositories:"name",
+                }
+                result.items.forEach(element => {
+                    const variavelf = document.createElement("a")
+                    const variaveldiv = document.createElement("div")
+                        variavelf.href = element.html_url
+                        variavelf.target = "_blank"
+                        variavelf.innerText = element.id+" "+element[nomeParametro[pesquisatipo]]
+                        variaveldiv.appendChild(variavelf)
+                        document.querySelector(".resultadosShow").appendChild(variaveldiv)
+
+                });
+            })
+            .catch(error => console.log('error', error));
+    }
+        </script>
+
+</html>
